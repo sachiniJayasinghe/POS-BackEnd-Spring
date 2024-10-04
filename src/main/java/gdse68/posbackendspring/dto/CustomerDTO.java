@@ -8,8 +8,8 @@ import org.hibernate.annotations.processing.Pattern;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class CustomerDTO {
+
+public class CustomerDTO implements SuperDTO {
     private String id;
     private String name;
     private String address;
