@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrdersDTO {
+public class OrdersDTO implements SuperDTO {
     private String oderId;
     private String createDate;
     private String customerId;

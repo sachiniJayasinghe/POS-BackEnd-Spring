@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -17,4 +19,5 @@ public class Orders implements SuperEntity{
     @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
     private String createDate;
+
 }
