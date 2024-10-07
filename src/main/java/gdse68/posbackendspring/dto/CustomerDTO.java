@@ -13,10 +13,12 @@ import javax.validation.constraints.Pattern;
 public class CustomerDTO implements SuperDTO {
     @Pattern(regexp = "^(C00-)[0-9]{3}$")
     private String customerId;
-    @Pattern(regexp = "^[A-z ]{3,20}$")
+//    @Pattern(regexp = "^[A-z ]{3,20}$")
     private String name;
-    @Pattern(regexp = "^[A-Za-z0-9/, -]{4,30}$")
+//    @Pattern(regexp = "^[A-Za-z0-9/, -]{4,30}$")
     private String address;
-    @Pattern(regexp = "^[0-9]{1,}[.]?[0-9]{2}$")
+//    @Pattern(regexp = "^[0-9]{1,}[.]?[0-9]{2}$")
     private String salary;
+    private String profilePic;
+
 }

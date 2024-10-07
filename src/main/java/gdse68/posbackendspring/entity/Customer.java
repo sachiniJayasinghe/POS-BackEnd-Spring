@@ -19,6 +19,8 @@ public class Customer implements SuperEntity {
     private String name;
     private String address;
     private String salary;
+    @Column(columnDefinition = "LONGTEXT")
+    private String profilePic;
     @OneToMany(mappedBy = "customer")
     private List<Orders> orders;
 }
