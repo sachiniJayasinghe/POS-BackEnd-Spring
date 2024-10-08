@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.dto;
 
+import gdse68.posbackendspring.customObj.CustomerResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CustomerDTO implements SuperDTO {
+public class CustomerDTO implements SuperDTO, CustomerResponse {
     @Pattern(regexp = "^(C00-)[0-9]{3}$")
     private String customerId;
 //    @Pattern(regexp = "^[A-z ]{3,20}$")

@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.service;
 
+import gdse68.posbackendspring.customObj.CustomerErrorResponse;
 import gdse68.posbackendspring.customObj.CustomerResponse;
 import gdse68.posbackendspring.dao.CustomerDao;
 import gdse68.posbackendspring.dto.CustomerDTO;
@@ -57,11 +58,18 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public CustomerResponse getSelectedCustomer(String customerId) {
-        return null;
+        if(customerDao.existsById(customerId)){
+            Customer customerEntityByCusId = customerDao.getCusEntityByCustomerId(customerId);
+            return mapping.convertToCustomerDTO(customerEntityByCusId);
+        }else {
+            return new CustomerErrorResponse(0, "Customer not found");
+        }
     }
+
 
     @Override
     public List<CustomerDTO> getAllCustomer() {
-        return List.of();
-    }
+        List<Customer> getAllCustomer = customerDao.findAll();
+        return mapping.convertUserToDTOList(getAllCustomer);
+      }
 }

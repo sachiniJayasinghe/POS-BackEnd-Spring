@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.controller;
 
+import gdse68.posbackendspring.customObj.CustomerResponse;
 import gdse68.posbackendspring.dto.CustomerDTO;
 import gdse68.posbackendspring.exception.CustomerNotFoundException;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
@@ -85,5 +86,9 @@ public class CustomerController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public CustomerResponse getSelectedUser(@PathVariable ("id") String customerId){
+        return customerService.getSelectedCustomer(customerId);
     }
 }

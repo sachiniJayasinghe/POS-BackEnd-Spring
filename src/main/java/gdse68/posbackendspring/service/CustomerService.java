@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.service;
 
+import gdse68.posbackendspring.customObj.CustomerErrorResponse;
 import gdse68.posbackendspring.customObj.CustomerResponse;
 import gdse68.posbackendspring.dto.CustomerDTO;
 
