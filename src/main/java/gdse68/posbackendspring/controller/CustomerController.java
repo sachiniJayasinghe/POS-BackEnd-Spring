@@ -53,7 +53,7 @@ public class CustomerController {
     }
 
     @PatchMapping(value = "/{id}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> updateUser(
+    public ResponseEntity<Void> updateCustomer(
             @PathVariable ("id") String id,
 //            @RequestPart("updateCustomerId") String updateCustomerId,
             @RequestPart ("updateName") String updateName,
