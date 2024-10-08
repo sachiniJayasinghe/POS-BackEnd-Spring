@@ -25,7 +25,7 @@ public class CustomerController {
     private final CustomerService customerService;
     //Save User
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> saveUser(
+    public ResponseEntity<Void> saveCustomer(
             @RequestPart("customerId") String customerId,
             @RequestPart("name") String name,
             @RequestPart ("address") String address,
