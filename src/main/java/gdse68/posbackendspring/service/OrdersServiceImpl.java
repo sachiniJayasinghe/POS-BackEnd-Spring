@@ -45,7 +45,12 @@ public class OrdersServiceImpl implements OrdersService{
 
     @Override
     public void deleteOrder(String orderId) {
-
+        Optional<Orders> findId = ordersDao.findById(orderId);
+        if(!findId.isPresent()){
+            throw new OrderNotFound("Order not found");
+        }else {
+            ordersDao.deleteById(orderId);
+        }
     }
 
     @Override
