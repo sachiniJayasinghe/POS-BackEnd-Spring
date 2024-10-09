@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.service;
 
+import gdse68.posbackendspring.customObj.CustomerErrorResponse;
 import gdse68.posbackendspring.customObj.ItemErrorResponse;
 import gdse68.posbackendspring.customObj.ItemResponse;
 import gdse68.posbackendspring.customObj.OrderErrorResponse;
@@ -65,14 +66,17 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public ItemResponse getSelectedItem(String itemCode) {
         if(itemDao.existsById(itemCode)){
-            return mapping.convertToItemDTO(itemDao.getReferenceById(itemCode));
+            Item itemEntityByItemCode = itemDao.getItemEntityByItemCode(itemCode);
+            return mapping.convertToItemDTO(itemEntityByItemCode);
         }else {
-            return new ItemErrorResponse(0,"Item not found");
+            return new ItemErrorResponse(0, "Item not found");
         }
     }
 
     @Override
     public List<ItemDTO> getAllItem() {
-        return List.of();
+        List<Item> getAllItem = itemDao.findAll();
+        return mapping.convertItemToDTOList(getAllItem);
+
     }
 }

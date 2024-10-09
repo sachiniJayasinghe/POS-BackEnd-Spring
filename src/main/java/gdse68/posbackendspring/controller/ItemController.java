@@ -1,5 +1,9 @@
 package gdse68.posbackendspring.controller;
 
+import gdse68.posbackendspring.customObj.CustomerResponse;
+import gdse68.posbackendspring.customObj.ItemResponse;
+import gdse68.posbackendspring.customObj.OrdersResponse;
+import gdse68.posbackendspring.dto.CustomerDTO;
 import gdse68.posbackendspring.dto.ItemDTO;
 import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
@@ -12,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/item")
@@ -59,5 +65,13 @@ public class ItemController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping(value = "/{itemCode}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ItemResponse getSelectedItem(@PathVariable ("itemCode") String itemCode){
+        return itemService.getSelectedItem(itemCode);
+    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ItemDTO> getAllItem(){
+        return itemService.getAllItem();
     }
 }
