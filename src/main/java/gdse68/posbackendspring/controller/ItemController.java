@@ -49,4 +49,15 @@ public class ItemController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @DeleteMapping(value ="/{itemCode}" )
+    public ResponseEntity<Void> deleteItem(@PathVariable ("itemCode") String itemCode) {
+        try {
+            itemService.deleteItem(itemCode);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (OrderNotFound e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
