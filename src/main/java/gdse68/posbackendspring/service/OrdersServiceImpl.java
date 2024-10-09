@@ -4,6 +4,7 @@ import gdse68.posbackendspring.customObj.OrdersResponse;
 import gdse68.posbackendspring.dao.OrdersDao;
 import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.entity.Orders;
+import gdse68.posbackendspring.exception.OrderNotFound;
 import gdse68.posbackendspring.util.Mapping;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +33,14 @@ public class OrdersServiceImpl implements OrdersService{
     }
 
     @Override
-    public void updateOrder(String orderId, OrdersDTO ordersDTO) {
-
+    public void updateOrder(String orderId, OrdersDTO incomeOrderDTO) {
+        Optional<Orders> tmpOrderEntity= ordersDao.findById(orderId);
+        if(!tmpOrderEntity.isPresent()){
+            throw new OrderNotFound("Order not found");
+        }else {
+            tmpOrderEntity.get().setOderId(incomeOrderDTO.getOderId());
+            tmpOrderEntity.get().setCreateDate(incomeOrderDTO.getCreateDate());
+        }
     }
 
     @Override
