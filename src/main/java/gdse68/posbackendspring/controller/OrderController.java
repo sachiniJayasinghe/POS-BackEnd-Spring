@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/orders")
 @RequiredArgsConstructor
@@ -63,6 +65,10 @@ public class OrderController {
     @GetMapping(value = "/{orderId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public OrdersResponse getSelectedOrder(@PathVariable ("orderId") String orderId)  {
         return ordersService.getSelectedOrder(orderId);
+    }
+    @GetMapping(value = "allorder", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrdersDTO> getAllOrders(){
+        return ordersService.getAllOrder();
     }
 
     }
