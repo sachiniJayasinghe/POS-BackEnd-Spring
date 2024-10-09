@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ItemService {
     void saveItem(ItemDTO itemDTO);
-    void updateItem(ItemDTO itemDTO);
+    void updateItem(String itemCode ,ItemDTO itemDTO);
     void deleteItem(String itemCode);
     ItemResponse getSelectedItem(String itemCode);
     List<ItemDTO> getAllItem();

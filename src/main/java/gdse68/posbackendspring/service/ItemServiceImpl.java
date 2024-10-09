@@ -6,8 +6,10 @@ import gdse68.posbackendspring.dao.ItemDao;
 import gdse68.posbackendspring.dto.ItemDTO;
 import gdse68.posbackendspring.entity.Customer;
 import gdse68.posbackendspring.entity.Item;
+import gdse68.posbackendspring.entity.Orders;
 import gdse68.posbackendspring.exception.CustomerNotFoundException;
 import gdse68.posbackendspring.exception.ItemNotFoundException;
+import gdse68.posbackendspring.exception.OrderNotFound;
 import gdse68.posbackendspring.util.Mapping;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -35,18 +37,18 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void updateItem(ItemDTO itemDTO) {
-        Optional<Item> tmpItem = itemDao.findById(itemDTO.getItemCode());
-        if(!tmpItem.isPresent()){
-            throw new ItemNotFoundException("Item not found");
+    public void updateItem(String itemCode, ItemDTO itemDTO) {
+        Optional<Item> tmpItemEntity= itemDao.findById(itemCode);
+        if(!tmpItemEntity.isPresent()){
+            throw new OrderNotFound("Item not found");
         }else {
-            tmpItem.get().setItemCode(itemDTO.getItemCode());
-            tmpItem.get().setItemDesc(itemDTO.getItemDesc());
-            tmpItem.get().setQty(itemDTO.getQty());
-            tmpItem.get().setUnitPrice(itemDTO.getUnitPrice());
-        }
+            tmpItemEntity.get().setItemDesc(itemDTO.getItemDesc());
+            tmpItemEntity.get().setQty(itemDTO.getQty());
+            tmpItemEntity.get().setUnitPrice(itemDTO.getUnitPrice());
 
+        }
     }
+
 
     @Override
     public void deleteItem(String itemCode) {
