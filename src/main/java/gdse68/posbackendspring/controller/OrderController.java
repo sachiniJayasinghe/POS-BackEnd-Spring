@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.controller;
 
+import gdse68.posbackendspring.customObj.OrdersResponse;
 import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
 import gdse68.posbackendspring.exception.OrderNotFound;
@@ -58,6 +59,10 @@ public class OrderController {
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @GetMapping(value = "/{orderId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public OrdersResponse getSelectedOrder(@PathVariable ("orderId") String orderId)  {
+        return ordersService.getSelectedOrder(orderId);
     }
 
     }
