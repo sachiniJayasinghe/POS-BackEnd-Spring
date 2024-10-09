@@ -4,6 +4,10 @@ import gdse68.posbackendspring.customObj.ItemResponse;
 import gdse68.posbackendspring.dao.CustomerDao;
 import gdse68.posbackendspring.dao.ItemDao;
 import gdse68.posbackendspring.dto.ItemDTO;
+import gdse68.posbackendspring.entity.Customer;
+import gdse68.posbackendspring.entity.Item;
+import gdse68.posbackendspring.exception.CustomerNotFoundException;
+import gdse68.posbackendspring.exception.ItemNotFoundException;
 import gdse68.posbackendspring.util.Mapping;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -30,6 +36,15 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public void updateItem(ItemDTO itemDTO) {
+        Optional<Item> tmpItem = itemDao.findById(itemDTO.getItemCode());
+        if(!tmpItem.isPresent()){
+            throw new ItemNotFoundException("Item not found");
+        }else {
+            tmpItem.get().setItemCode(itemDTO.getItemCode());
+            tmpItem.get().setItemDesc(itemDTO.getItemDesc());
+            tmpItem.get().setQty(itemDTO.getQty());
+            tmpItem.get().setUnitPrice(itemDTO.getUnitPrice());
+        }
 
     }
 
