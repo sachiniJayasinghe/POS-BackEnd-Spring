@@ -2,16 +2,14 @@ package gdse68.posbackendspring.controller;
 
 import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
+import gdse68.posbackendspring.exception.OrderNotFound;
 import gdse68.posbackendspring.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/orders")
@@ -35,4 +33,19 @@ public class OrderController {
             }
         }
     }
-}
+    @PatchMapping(value = "/{orderId}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> updateOrder(@PathVariable ("orderId") String orderId, @RequestBody OrdersDTO order) {
+        try {
+            if (order == null && (orderId == null || order.equals(""))) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            ordersService.updateOrder(orderId, order);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (OrderNotFound e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    }
