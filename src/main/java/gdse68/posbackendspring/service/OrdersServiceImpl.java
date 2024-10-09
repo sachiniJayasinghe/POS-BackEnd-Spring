@@ -1,5 +1,6 @@
 package gdse68.posbackendspring.service;
 
+import gdse68.posbackendspring.customObj.OrderErrorResponse;
 import gdse68.posbackendspring.customObj.OrdersResponse;
 import gdse68.posbackendspring.dao.OrdersDao;
 import gdse68.posbackendspring.dto.OrdersDTO;
@@ -55,7 +56,11 @@ public class OrdersServiceImpl implements OrdersService{
 
     @Override
     public OrdersResponse getSelectedOrder(String orderId) {
-        return null;
+        if(ordersDao.existsById(orderId)){
+            return mapping.convertToDTO(ordersDao.getReferenceById(orderId));
+        }else {
+            return new OrderErrorResponse(0,"Order not found");
+        }
     }
 
     @Override

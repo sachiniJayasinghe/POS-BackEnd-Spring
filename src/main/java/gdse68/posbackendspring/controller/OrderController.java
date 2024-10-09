@@ -48,4 +48,16 @@ public class OrderController {
         }
     }
 
+    @DeleteMapping(value ="/{orderId}" )
+    public ResponseEntity<Void> deleteOrders(@PathVariable ("orderId") String orderId) {
+        try {
+            ordersService.deleteOrder(orderId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (OrderNotFound e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     }
