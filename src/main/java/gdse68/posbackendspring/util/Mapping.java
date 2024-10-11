@@ -2,9 +2,11 @@ package gdse68.posbackendspring.util;
 
 import gdse68.posbackendspring.dto.CustomerDTO;
 import gdse68.posbackendspring.dto.ItemDTO;
+import gdse68.posbackendspring.dto.OrderDetailsDTO;
 import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.entity.Customer;
 import gdse68.posbackendspring.entity.Item;
+import gdse68.posbackendspring.entity.OrderDetails;
 import gdse68.posbackendspring.entity.Orders;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

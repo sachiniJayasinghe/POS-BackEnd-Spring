@@ -20,4 +20,6 @@ public class Orders implements SuperEntity{
     private Customer customer;
     private String createDate;
 
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    private List<OrderDetails> orderDetails;
 }
