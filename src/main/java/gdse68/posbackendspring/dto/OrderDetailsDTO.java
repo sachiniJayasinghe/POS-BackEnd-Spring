@@ -12,9 +12,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class OrderDetailsDTO implements  SuperDTO, OrderDetailResponse {
     private String od_id;
-    private String orderId;
     private String itemCode;
-    private BigDecimal unit_price;
+    private BigDecimal price;
     private int qty;
 
 }

@@ -63,8 +63,9 @@ public class OrdersServiceImpl implements OrdersService {
         for (OrderDetailsDTO orderDetailDTO : ordersDTO.getOrder_list()) {
             OrderDetails orderDetailsEntity = new OrderDetails();
             orderDetailsEntity.setOd_id(orderDetailDTO.getOd_id());
+
             orderDetailsEntity.setQty(orderDetailDTO.getQty());
-            orderDetailsEntity.setUnitPrice(orderDetailDTO.getUnit_price());
+            orderDetailsEntity.setUnitPrice(orderDetailDTO.getPrice());
 
             // Retrieve the ItemEntity from the database
             Item itemEntity = itemDao.findById(orderDetailDTO.getItemCode())
