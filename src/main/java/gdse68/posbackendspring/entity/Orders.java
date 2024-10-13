@@ -12,8 +12,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Table(name = "orders")
 @Entity
 public class Orders implements SuperEntity{
@@ -32,6 +31,4 @@ public class Orders implements SuperEntity{
     private BigDecimal cash;
     private BigDecimal balance;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<OrderDetails> orderDetails = new ArrayList<>();
 }

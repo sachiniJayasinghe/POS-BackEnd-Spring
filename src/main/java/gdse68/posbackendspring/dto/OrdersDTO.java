@@ -1,7 +1,6 @@
 package gdse68.posbackendspring.dto;
 
 import gdse68.posbackendspring.customObj.OrdersResponse;
-import gdse68.posbackendspring.entity.OrderDetails;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,6 @@ public class OrdersDTO implements SuperDTO , OrdersResponse {
     private BigDecimal subTotal;
     private BigDecimal cash;
     private BigDecimal balance;
-    private List<OrderDetails> order_list;
+    private List<OrderDetailsDTO> order_list;
 
 }

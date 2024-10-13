@@ -9,7 +9,6 @@ import gdse68.posbackendspring.dao.ItemDao;
 import gdse68.posbackendspring.dto.ItemDTO;
 import gdse68.posbackendspring.entity.Customer;
 import gdse68.posbackendspring.entity.Item;
-import gdse68.posbackendspring.entity.Orders;
 import gdse68.posbackendspring.exception.CustomerNotFoundException;
 import gdse68.posbackendspring.exception.ItemNotFoundException;
 import gdse68.posbackendspring.exception.OrderNotFound;

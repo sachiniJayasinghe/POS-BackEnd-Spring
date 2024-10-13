@@ -3,11 +3,9 @@ package gdse68.posbackendspring.util;
 import gdse68.posbackendspring.dto.CustomerDTO;
 import gdse68.posbackendspring.dto.ItemDTO;
 import gdse68.posbackendspring.dto.OrderDetailsDTO;
-import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.entity.Customer;
 import gdse68.posbackendspring.entity.Item;
 import gdse68.posbackendspring.entity.OrderDetails;
-import gdse68.posbackendspring.entity.Orders;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +18,7 @@ public class Mapping {
     @Autowired
     private ModelMapper modelMapper;
 
-    //matters of NoteEntity and DTO
-    public OrdersDTO convertToDTO(Orders orders) {return modelMapper.map(orders, OrdersDTO.class);}
-    public Orders convertToEntity(OrdersDTO dto) {return modelMapper.map(dto, Orders.class);}
-    public List<OrdersDTO> convertToDTO(List<Orders> orders) {
-        return modelMapper.map(orders, new TypeToken<List<OrdersDTO>>() {}.getType());
-    }
+
     //Customer matters mapping
     public Customer convertToCustomerEntity(CustomerDTO customerDTO) {
         return modelMapper.map(customerDTO, Customer.class);
@@ -38,7 +31,7 @@ public class Mapping {
         return modelMapper.map(customers, new TypeToken<List<CustomerDTO>>() {}.getType());
     }
 
-    //Item matters mapping
+  //  Item matters mapping
     public Item convertToItemEntity(ItemDTO itemDTO) {
         return modelMapper.map(itemDTO, Item.class);
     }
@@ -49,7 +42,17 @@ public class Mapping {
     public List<ItemDTO> convertItemToDTOList(List<Item> items) {
         return modelMapper.map(items, new TypeToken<List<ItemDTO>>() {}.getType());
     }
+    public OrderDetailsDTO convertOrderDetailsEntityToOrderDetailsDTO(OrderDetails orderDetailsEntity) {
+        return modelMapper.map(orderDetailsEntity, OrderDetailsDTO.class);
+    }
 
+    public OrderDetails convertOrderDetailsDTOToOrderDetailsEntity(OrderDetailsDTO orderDetailsDTO) {
+        return modelMapper.map(orderDetailsDTO, OrderDetails.class);
+    }
+
+    public List<OrderDetailsDTO> convertOrderDetailEntityListToOrderDetailDTOList(List<OrderDetails> orderDetailsEntityList) {
+        return modelMapper.map(orderDetailsEntityList, new TypeToken<List<OrderDetailsDTO>>() {}.getType());
+    }
 
 
 }

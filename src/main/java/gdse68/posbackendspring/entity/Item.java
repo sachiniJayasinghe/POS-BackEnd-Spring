@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 @Table(name = "items")
 @Entity
 public class Item implements SuperEntity{
@@ -22,6 +21,5 @@ public class Item implements SuperEntity{
     private int qty;
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "items", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<OrderDetails> orderDetails;
+
 }

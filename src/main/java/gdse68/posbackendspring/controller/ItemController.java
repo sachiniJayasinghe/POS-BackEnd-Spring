@@ -5,7 +5,6 @@ import gdse68.posbackendspring.customObj.ItemResponse;
 import gdse68.posbackendspring.customObj.OrdersResponse;
 import gdse68.posbackendspring.dto.CustomerDTO;
 import gdse68.posbackendspring.dto.ItemDTO;
-import gdse68.posbackendspring.dto.OrdersDTO;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
 import gdse68.posbackendspring.exception.OrderNotFound;
 import gdse68.posbackendspring.service.CustomerService;
