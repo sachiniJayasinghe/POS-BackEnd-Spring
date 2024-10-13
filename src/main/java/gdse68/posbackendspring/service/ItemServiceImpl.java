@@ -40,16 +40,29 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void updateItem(String itemCode, ItemDTO itemDTO) {
-        Optional<Item> tmpItemEntity= itemDao.findById(itemCode);
-        if(!tmpItemEntity.isPresent()){
-            throw new OrderNotFound("Item not found");
-        }else {
-            tmpItemEntity.get().setItemDesc(itemDTO.getItemDesc());
-            tmpItemEntity.get().setQty(itemDTO.getQty());
-            tmpItemEntity.get().setUnitPrice(itemDTO.getUnitPrice());
+    public List<ItemDTO> getAllItems() {
+        return mapping.convertItemToDTOList(itemDao.findAll());
 
-        }
+    }
+
+    @Override
+    public ItemResponse getItemById(String id) {
+        if(itemDao.existsById(id)){
+            return mapping.convertToItemDTO(itemDao.getReferenceById(id));
+        }else{
+            throw new ItemNotFoundException("Item not found ");
+        }    }
+
+    @Override
+    public void updateItem(String id, ItemDTO itemDTO) {
+            Optional<Item> tmp = itemDao.findById(id);
+            if (!tmp.isPresent()) {
+                throw new ItemNotFoundException("item not found");
+            }else {
+                tmp.get().setName(itemDTO.getName());
+                tmp.get().setPrice(itemDTO.getPrice());
+                tmp.get().setQty(itemDTO.getQty());
+            }
     }
 
 
@@ -63,20 +76,5 @@ public class ItemServiceImpl implements ItemService{
         }
     }
 
-    @Override
-    public ItemResponse getSelectedItem(String itemCode) {
-        if(itemDao.existsById(itemCode)){
-            Item itemEntityByItemCode = itemDao.getItemEntityByItemCode(itemCode);
-            return mapping.convertToItemDTO(itemEntityByItemCode);
-        }else {
-            return new ItemErrorResponse(0, "Item not found");
-        }
-    }
 
-    @Override
-    public List<ItemDTO> getAllItem() {
-        List<Item> getAllItem = itemDao.findAll();
-        return mapping.convertItemToDTOList(getAllItem);
-
-    }
 }

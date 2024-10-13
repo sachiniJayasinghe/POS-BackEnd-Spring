@@ -1,21 +1,27 @@
 package gdse68.posbackendspring.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.math.BigDecimal;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+
 @Table(name = "items")
 @Entity
 public class Item implements SuperEntity{
     @Id
     private String itemCode;
-    private String itemDesc;
-    private int qty ;
-    private double unitPrice;
+
+    private String name;
+    private int qty;
+    private BigDecimal price;
+
+    @OneToMany(mappedBy = "items", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderDetails> orderDetails;
 }

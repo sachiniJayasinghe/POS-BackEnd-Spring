@@ -1,29 +1,33 @@
 package gdse68.posbackendspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "orderDetails")
+
+@Table(name = "order_details")
 @Entity
-@IdClass(OrderItem_PK.class)
-public class OrderDetails implements SuperEntity{
+public class OrderDetails {
     @Id
-    private String oderId;
-    @Id
-    private String itemCode;
-    private int qty;
-    private double unitPrice;
-    @ManyToOne
-    @JoinColumn(name = "oderId", nullable = false)
+    private String od_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orderId", nullable = false)
     private Orders orders;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "itemCode", nullable = false)
     private Item item;
+
+    private BigDecimal unitPrice;
+    private int qty;
+
+
 
 }

@@ -6,6 +6,5 @@ import gdse68.posbackendspring.entity.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemDao extends JpaRepository<Item, String> {
-    Item getItemEntityByItemCode(String itemCode);
 
 }

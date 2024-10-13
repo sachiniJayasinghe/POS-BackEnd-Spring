@@ -1,25 +1,37 @@
 package gdse68.posbackendspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name = "orders")
 @Entity
 public class Orders implements SuperEntity{
     @Id
-    private String oderId;
-    @ManyToOne
+    private String orderId;
+
+    private LocalDate orderDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
-    private String createDate;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-    private List<OrderDetails> orderDetails;
+    private BigDecimal total;
+    private BigDecimal discount;
+    private BigDecimal subTotal;
+    private BigDecimal cash;
+    private BigDecimal balance;
+
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderDetails> orderDetails = new ArrayList<>();
 }

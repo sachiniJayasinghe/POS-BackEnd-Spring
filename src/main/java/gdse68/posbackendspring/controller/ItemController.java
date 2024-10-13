@@ -68,10 +68,10 @@ public class ItemController {
     }
     @GetMapping(value = "/{itemCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ItemResponse getSelectedItem(@PathVariable ("itemCode") String itemCode){
-        return itemService.getSelectedItem(itemCode);
+        return itemService.getItemById(itemCode);
     }
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ItemDTO> getAllItem(){
-        return itemService.getAllItem();
+        return itemService.getAllItems();
     }
 }

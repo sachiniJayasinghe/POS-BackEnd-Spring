@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 
 public class CustomerDTO implements SuperDTO, CustomerResponse {
-    @Pattern(regexp = "^(C00-)[0-9]{3}$")
+//    @Pattern(regexp = "^(C00-)[0-9]{3}$")
     private String customerId;
 //    @Pattern(regexp = "^[A-z ]{3,20}$")
     private String name;
