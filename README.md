@@ -1,5 +1,4 @@
 # POS-BackEnd-Spring
-<h1>POS System</h1>
 
 <h2>Backend API</h2>
 
@@ -59,7 +58,7 @@ using Spring, and the frontend is developed with HTML, CSS, and JavaScript.</p>
 </ul>
 
 <h2>Clone the repository</h2>
-<p>git clone</p><a href="https://github.com/sasobapriyanjana11/Pos_System_Spring_FW.git">https://github.com/sasobapriyanjana11/Pos_System_Spring_FW.git</a>
+<p>git clone</p><a href="https://github.com/sachiniJayasinghe/POS-BackEnd-Spring.git">https://github.com/sachiniJayasinghe/POS-BackEnd-Spring.git</a>
 
 <h2>API Endpoints</h2>
 <h3>Customer Endpoints</h3>
