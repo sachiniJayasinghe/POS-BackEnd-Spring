@@ -1,106 +1,57 @@
-# POS-BackEnd-Spring
+# ✌️Spring POS System (Point of Sale)
 
-<h2>Backend API</h2>
+This is a Point of Sale (POS) System built on the Spring Framework, designed to manage and streamline transactions in
+retail or hospitality environments. This system integrates various modules, including customer management, inventory
+management, and sales processing.
 
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+Spring provides a robust and scalable foundation for developing POS systems, allowing for the creation of
+enterprise-level applications capable of handling high transaction volumes. The Spring-based POS System utilizes
+technologies such as Spring MVC or Spring WebFlux for web handling, Spring Data JPA for database access, and Spring
+Security for secure authentication and authorization.
 
-[comment]: <> (<h2>Frontend</h2>)
+Key features of the Spring POS System may include customizable user interfaces built with Thymeleaf or integrated with
+frontend frameworks like Angular, React, or Vue.js, real-time inventory tracking, and secure payment processing
+facilitated by Spring Security.
 
-[comment]: <> (![HTML5]&#40;https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white&#41;)
+This architecture enables businesses to deploy a reliable and flexible POS solution that can adapt to the evolving needs
+of the retail or hospitality industry while benefiting from the productivity and community support inherent in the
+Spring ecosystem. Additionally, Spring Boot can be leveraged to simplify the setup and configuration of the application,
+facilitating rapid development and deployment
 
-[comment]: <> (![CSS3]&#40;https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white&#41;)
+### Technology Stack
 
-[comment]: <> (![JavaScript]&#40;https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E&#41;)
-<h2>Introduction</h2>
-<p style="font-size: 16px; font-weight: 100; line-height: 1.5">This is a Point of Sale (POS) system that allows for the
-management of customers and items, placing orders, and viewing order details. The backend is built
-using Spring, and the frontend is developed with HTML, CSS, and JavaScript.</p>
+✅Java 21<br/>
+✅Spring<br/>
+✅MySQL<br/>
+✅Hibernate<br/>
+✅Maven<br/>
+✅Tomcat 10.1.28<br/>
+✅Layered Architecture<br/>
 
-<h2>Features</h2>
-<ol>
-    <li style="font-weight: bold; margin-bottom: 10px">
-        Customer Management 
-            <p style="font-weight: lighter">Create, Read, Update, and Delete (CRUD) operations for customers.</p>
-    </li>
-    <li style="font-weight: bold; margin-bottom: 10px">
-        Item Management
-            <p style="font-weight: lighter">Create, Read, Update, and Delete (CRUD) operations for items.</p>
-    </li>
-    <li style="font-weight: bold; margin-bottom: 10px">
-        Place Orders
-            <p style="font-weight: lighter">Functionality to place new orders.</p>
-    </li>
-    <li style="font-weight: bold; margin-bottom: 10px">
-        View Orders
-            <p style="font-weight: lighter">Functionality to view all existing orders.</p>
-    </li>
-</ol>
+### Functions
 
-<h2>Technologies Used</h2>
-<ul>
-    <li>Backend: Spring</li>
-     <li>Database: MySQL</li>
+✅User can Save, Search, Update, Delete & Get All Customers<br/>
+✅User can Save, Search, Update, Delete & Get All Items<br/>
+✅User can manage Orders<br/>
+✅User can view Order Details<br/>
 
-[comment]: <> (    <li>Frontend: HTML, CSS, JavaScript</li>)
+### How to use
 
-</ul>
+* Clone this repo https://github.com/sachiniJayasinghe/POS-BackEnd-Spring.git
+* Reload the `pom.xml`
+* Run the Web Application
 
-<h2>Installation</h2>
-<h3>Prerequisites</h3>
-<ul>
-    <li>Java 17 or later</li>
-    <li>Maven</li>
+### Version
 
-[comment]: <> (<li>Node.js &#40;for frontend dependencies, if applicable&#41;</li>)
-</ul>
+3.3.3
 
-<h2>Clone the repository</h2>
-<p>git clone</p><a href="https://github.com/sachiniJayasinghe/POS-BackEnd-Spring.git">https://github.com/sachiniJayasinghe/POS-BackEnd-Spring.git</a>
+⭐️If you hava any bugs or issues ,If you want to explain code please contact me on :<br/>
+[gunasekarasachini2003@gmail.com]<br/><br/>
 
-<h2>API Endpoints</h2>
-<h3>Customer Endpoints</h3>
-<ul>
-    <li>GET /customer: Retrieve all customers.</li>
-    <li>POST /customer: Create a new customer.</li>
-    <li>PUT /customer: Update an existing customer.</li>
-    <li>DELETE /customer/{id}: Delete a customer by ID.</li>
-</ul>
+<div align="center">
 
-<h3>Item Endpoints</h3>
-<ul>
-    <li>GET /item: Retrieve all items.</li>
-    <li>POST /item: Create a new item.</li>
-    <li>PUT /item: Update an existing item.</li>
-    <li>DELETE /item/{id}: Delete a item by ID.</li>
-</ul>
+#### This project is licensed under the [MIT License](LICENSE)
 
-<h3>Order Endpoints</h3>
-<ul>
-    <li>GET /order: Retrieve all orders.</li>
-    <li>POST /order: Create a new order.</li>
-</ul>
+#### © 2024 All Right Reserved, Designed By [sachiniJayasinghe](https://github.com/sachiniJayasinghe)
 
-<h2>Usage</h2>
-
-[comment]: <> (<ol style="font-weight: bold">)
-
-[comment]: <> (    <li>Customer Management:)
-
-[comment]: <> (        <ul style="font-weight: lighter">)
-
-[comment]: <> (            <li>Navigate to the customer section on the frontend.</li>)
-
-[comment]: <> (            <li>Use the form to add a new customer or manage existing customers.</li>)
-
-[comment]: <> (        </ul>)
-
-[comment]: <> (    </li>)
-
-[comment]: <> (    <li>Item Management:)
-
-[comment]: <> (        <ul style="font-weight: lighter">)
-
-[comment]: <> (            <li>Navigate to the item section on the frontend.</li>)
+</div>
