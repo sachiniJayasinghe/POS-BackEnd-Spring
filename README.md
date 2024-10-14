@@ -45,6 +45,12 @@ facilitating rapid development and deployment
 
 3.3.3
 
+<h2>API Documentation</h2>
+
+<a href="https://documenter.getpostman.com/view/35385718/2sAXxTbVz7">API Documentation</a>
+
+<hr/>
+
 ⭐️If you hava any bugs or issues ,If you want to explain code please contact me on :<br/>
 [gunasekarasachini2003@gmail.com]<br/><br/>
 
