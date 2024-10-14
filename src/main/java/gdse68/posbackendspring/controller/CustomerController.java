@@ -2,11 +2,14 @@ package gdse68.posbackendspring.controller;
 
 import gdse68.posbackendspring.customObj.CustomerResponse;
 import gdse68.posbackendspring.dto.CustomerDTO;
+import gdse68.posbackendspring.entity.Customer;
 import gdse68.posbackendspring.exception.CustomerNotFoundException;
 import gdse68.posbackendspring.exception.DataPersistFailedException;
 import gdse68.posbackendspring.service.CustomerService;
 import gdse68.posbackendspring.util.AppUtil;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +26,8 @@ public class CustomerController {
 
     @Autowired
     private final CustomerService customerService;
+    private static final Logger logger= LoggerFactory.getLogger(Customer.class);
+
     //Save User
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> saveCustomer(
@@ -44,8 +49,10 @@ public class CustomerController {
             buildUserDTO.setProfilePic(base64ProfilePic);
             //send to the service layer
             customerService.saveCustomer(buildUserDTO);
+            logger.info("Customer saved successfully: {}", buildUserDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (DataPersistFailedException e) {
+            logger.warn("Received null CustomerDTO");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -70,6 +77,7 @@ public class CustomerController {
             updateCustomer.setSalary(updateSalary);
             updateCustomer.setProfilePic(updateBase64ProfilePic);
             customerService.updateCustomer(updateCustomer);
+            logger.info("Customer updated successfully: {}",updateCustomer);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (CustomerNotFoundException e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -82,8 +90,11 @@ public class CustomerController {
     public ResponseEntity<Void> deleteCustomer(@PathVariable ("id") String customerId) {
         try {
             customerService.deleteCustomer(customerId);
+            logger.info("Customer deleted successfully: ID {}", customerId);
+
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (CustomerNotFoundException e) {
+            logger.error("Customer not found for deletion: ID {}", customerId, e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -91,11 +102,13 @@ public class CustomerController {
     }
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CustomerResponse getSelectedCustomer(@PathVariable ("id") String customerId){
+        logger.info("Fetching customer with ID: {}", customerId);
         return customerService.getSelectedCustomer(customerId);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CustomerDTO> getAllCustomer(){
+        logger.info("Fetching all customers");
         return customerService.getAllCustomer();
     }
 }

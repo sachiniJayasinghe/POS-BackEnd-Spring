@@ -14,9 +14,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemDTO implements SuperDTO, ItemResponse {
-  //  @Pattern(regexp = "^(I00-)[0-9]{3}$")
+   @Pattern(regexp = "^(I00-)[0-9]{3}$")
     private String itemCode;
-   // @Pattern(regexp = "^[A-z ]{3,20}$")
+   @Pattern(regexp = "^[A-z ]{3,20}$")
     private String name;
     private int qty;
     private BigDecimal price;
