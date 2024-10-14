@@ -43,6 +43,7 @@ public class PlaceOrderController {
         }
     }
 
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<OrderDetailsDTO> getOrderDetails() {
         return ordersService.getOrderDetails();
